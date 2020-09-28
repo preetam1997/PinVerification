@@ -1,15 +1,16 @@
 package pinValidation;
 
 import java.util.Scanner;
+import java.util.regex.*;
 
 public class PinValidation {
 	
 	public static void Pin_Validation(String s) {
 		
 		 
-	      String regex = "^[0-9]{6}";
+	      String regex = "^([0-9]{3})(\\s)?([0-9]{3})$";
 	     
-	      boolean result = s.matches(regex);
+	      boolean result = Pattern.matches(regex,s);
 	      if(result) {
 	         System.out.println("Given pin is valid");
 	      } else {
@@ -19,11 +20,10 @@ public class PinValidation {
 		
 		
 	public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in);
-	    System.out.println("Enter your Pin: ");
-	    String pin = sc.next();
-	    sc.close();
+		
+		
 	    
-	    Pin_Validation(pin);
+	    Pin_Validation("400008");
+	    Pin_Validation("400 008");
 	}
 }
